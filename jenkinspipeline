@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('gitclone') {
+            steps {
+                git branch: 'main', credentialsId: 'GIT', url: 'https://github.com/anandkumar9966/Terraform_CICD.git'
+            }
+        }
+        stage('init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+    }
+}
